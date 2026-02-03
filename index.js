@@ -1,5 +1,8 @@
 async function setupPlugin({ config, global }) {
-    global.propertiesToFilter = config.properties.split(',')
+    global.propertiesToFilter = config.properties
+   .split(',')
+   .map((p) => p.trim())
+   .filter((p) => p !== '')
 }
 
 function recursiveRemoveFilterObject(properties, propertyToFilterParts) {
